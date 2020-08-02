@@ -25,3 +25,9 @@ jobs:
           ${{ runner.os }}-maven-   
     - name: Build with Maven
       run: mvn -B clean package
+    - name: Copy artifacts
+      run: mkdir spring-security-jwt && cp target/*.jar spring-security-jwt
+    - uses: actions/upload-artifact@v1
+      with:
+        name: spring-security-jwt
+        path: spring-security-jwt
